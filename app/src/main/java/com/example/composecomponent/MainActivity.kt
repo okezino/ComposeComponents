@@ -1,16 +1,12 @@
 package com.example.composecomponent
 
-import android.graphics.fonts.FontStyle
 import android.os.Bundle
-import android.text.Selection
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -18,11 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
@@ -110,6 +106,7 @@ fun TextSelectable() {
         }
     }
 }
+
 /**
  * Learn about Column and extended Column functions
  */
@@ -138,18 +135,21 @@ fun RowScope.CustomBuild(weight: Float, color: Color = MaterialTheme.colors.prim
     ) {}
 
 }
+
 /**
  * Learn about Custom text using build annotation using with style paragraphStyle or SpanStyle
  */
 @Composable
-fun CustomTextView(){
+fun CustomTextView() {
     Text(
         buildAnnotatedString {
-            withStyle( style = ParagraphStyle(textAlign = TextAlign.Center)){
-                withStyle( style = SpanStyle(
-                    color = Color.Blue,
-                    fontSize = MaterialTheme.typography.h5.fontSize
-                )){
+            withStyle(style = ParagraphStyle(textAlign = TextAlign.Center)) {
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Blue,
+                        fontSize = MaterialTheme.typography.h5.fontSize
+                    )
+                ) {
                     append("A")
                 }
 
@@ -166,8 +166,42 @@ fun CustomTextView(){
  * Learn about Custom text using build annotation using with style paragraphStyle or SpanStyle
  */
 @Composable
-fun CustomTextView3(){
-    Text( text = "Hello World".repeat(30), maxLines = 3, overflow = TextOverflow.Ellipsis)
+fun CustomTextView3() {
+    Text(text = "Hello World".repeat(30), maxLines = 3, overflow = TextOverflow.Ellipsis)
+
+}
+
+/**
+ * Learn about Super and SubScript
+ */
+@Composable
+fun SuperScripText(normalText: String, superText: String, subText : String) {
+    Text(buildAnnotatedString {
+        withStyle(
+            style = SpanStyle(
+                fontSize = MaterialTheme.typography.subtitle1.fontSize
+            )
+        ) {
+            append(normalText)
+        }
+        withStyle(
+            style = SpanStyle(
+                fontSize = MaterialTheme.typography.overline.fontSize,
+                fontWeight = FontWeight.Normal,
+                baselineShift = BaselineShift.Subscript
+        )) {
+            append(superText)
+        }
+
+        withStyle(
+            style = SpanStyle(
+                fontSize = MaterialTheme.typography.overline.fontSize,
+                fontWeight = FontWeight.Normal,
+                baselineShift = BaselineShift.Superscript
+            )) {
+            append(subText)
+        }
+    }, modifier = Modifier)
 
 }
 
@@ -180,7 +214,7 @@ fun DefaultPreview() {
                 .fillMaxSize()
                 .background(color = Color.LightGray)
         ) {
-            TextSelectable()
+            SuperScripText(normalText = "10", superText = "2", "8")
         }
     }
 }
