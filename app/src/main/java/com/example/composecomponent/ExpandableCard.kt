@@ -1,6 +1,5 @@
 package com.example.composecomponent
 
-import android.inputmethodservice.Keyboard
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState

@@ -35,8 +35,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeComponentTheme {
                 // A surface container using the 'background' color from the theme
-                var expandableState by remember { mutableStateOf(false) }
-                val rotationState by animateFloatAsState(targetValue = if (expandableState) 180f else 0f)
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
@@ -45,7 +43,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(color = Color.LightGray)
                     ) {
-                        ExpandableCard("My Title")
+                        TextFieldCard()
                     }
 
                 }
@@ -212,12 +210,6 @@ fun SuperScripText(normalText: String, superText: String, subText : String) {
 @Composable
 fun DefaultPreview() {
     ComposeComponentTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = Color.LightGray)
-        ) {
-            SuperScripText(normalText = "10", superText = "2", "8")
-        }
+        TextFieldCard()
     }
 }
