@@ -3,6 +3,7 @@ package com.example.composecomponent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.DisableSelection
@@ -10,7 +11,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +35,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeComponentTheme {
                 // A surface container using the 'background' color from the theme
+                var expandableState by remember { mutableStateOf(false) }
+                val rotationState by animateFloatAsState(targetValue = if (expandableState) 180f else 0f)
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
@@ -42,7 +45,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(color = Color.LightGray)
                     ) {
-                        TextSelectable()
+                        ExpandableCard("My Title")
                     }
 
                 }
