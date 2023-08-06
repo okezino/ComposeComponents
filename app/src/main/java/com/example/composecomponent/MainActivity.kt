@@ -2,11 +2,14 @@ package com.example.composecomponent
 
 import android.graphics.fonts.FontStyle
 import android.os.Bundle
+import android.text.Selection
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -43,13 +46,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(color = Color.LightGray)
                     ) {
-                        Text(
-                            text = stringResource(id = R.string.sample),
-                            fontSize = 40.sp,
-                            modifier = Modifier
-                                .background(MaterialTheme.colors.primary)
-                                .padding(16.dp)
-                        )
+                        TextSelectable()
                     }
 
                 }
@@ -98,6 +95,21 @@ fun CustomText(name: String) {
     )
 }
 
+/**
+ * Learn about Text Selectable and DisableSelectable
+ */
+@Composable
+fun TextSelectable() {
+    SelectionContainer {
+        Column {
+            Text(text = "Hello World!!")
+            DisableSelection {
+                Text(text = "Hello World!!")
+            }
+            Text(text = "Hello World!!")
+        }
+    }
+}
 /**
  * Learn about Column and extended Column functions
  */
@@ -168,7 +180,7 @@ fun DefaultPreview() {
                 .fillMaxSize()
                 .background(color = Color.LightGray)
         ) {
-            CustomTextView3()
+            TextSelectable()
         }
     }
 }
