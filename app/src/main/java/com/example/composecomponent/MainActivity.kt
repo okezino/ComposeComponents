@@ -1,5 +1,6 @@
 package com.example.composecomponent
 
+import android.graphics.fonts.FontStyle
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,6 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,7 +38,19 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting(name = "Meaning")
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(color = Color.LightGray)
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.sample),
+                            fontSize = 40.sp,
+                            modifier = Modifier
+                                .background(MaterialTheme.colors.primary)
+                                .padding(16.dp)
+                        )
+                    }
 
                 }
             }
@@ -39,6 +60,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
+    Text(text = "I Love Android", fontSize = 40.sp)
+}
+
+/**
+ * Learn about Box and nested Box
+ */
+@Composable
+fun BoxBuilding(name: String) {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -58,6 +87,9 @@ fun Greeting(name: String) {
 
 }
 
+/**
+ * Learn about Custom Text
+ */
 @Composable
 fun CustomText(name: String) {
     Text(
@@ -66,6 +98,9 @@ fun CustomText(name: String) {
     )
 }
 
+/**
+ * Learn about Column and extended Column functions
+ */
 @Composable
 fun ColumnScope.CustomBuild(weight: Float, color: Color = MaterialTheme.colors.primary) {
     Surface(
@@ -77,6 +112,9 @@ fun ColumnScope.CustomBuild(weight: Float, color: Color = MaterialTheme.colors.p
 
 }
 
+/**
+ * Learn about Row and extended Row functions
+ */
 @Composable
 fun RowScope.CustomBuild(weight: Float, color: Color = MaterialTheme.colors.primary) {
     Surface(
@@ -88,12 +126,49 @@ fun RowScope.CustomBuild(weight: Float, color: Color = MaterialTheme.colors.prim
     ) {}
 
 }
+/**
+ * Learn about Custom text using build annotation using with style paragraphStyle or SpanStyle
+ */
+@Composable
+fun CustomTextView(){
+    Text(
+        buildAnnotatedString {
+            withStyle( style = ParagraphStyle(textAlign = TextAlign.Center)){
+                withStyle( style = SpanStyle(
+                    color = Color.Blue,
+                    fontSize = MaterialTheme.typography.h5.fontSize
+                )){
+                    append("A")
+                }
+
+                append("B")
+                append("C")
+                append("D")
+            }
+        }, modifier = Modifier.width(200.dp)
+    )
+
+}
+
+/**
+ * Learn about Custom text using build annotation using with style paragraphStyle or SpanStyle
+ */
+@Composable
+fun CustomTextView3(){
+    Text( text = "Hello World".repeat(30), maxLines = 3, overflow = TextOverflow.Ellipsis)
+
+}
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ComposeComponentTheme {
-        Greeting(name = "Meaning")
-
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.LightGray)
+        ) {
+            CustomTextView3()
+        }
     }
 }
