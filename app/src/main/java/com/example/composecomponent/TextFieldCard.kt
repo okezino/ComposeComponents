@@ -50,7 +50,8 @@ fun TextFieldCard() {
             mutableStateOf(false)
         }
 
-        var icon = if(visibility) R.drawable.baseline_visibility_24 else R.drawable.baseline_visibility_off_24
+        var icon =
+            if (visibility) R.drawable.baseline_visibility_24 else R.drawable.baseline_visibility_off_24
 
 
         OutlinedTextField(value = password,
@@ -75,7 +76,7 @@ fun TextFieldCard() {
             keyboardActions = KeyboardActions(
                 onSearch = { Log.d("Something Sub", "Search here") }
             ),
-            visualTransformation = if(visibility) VisualTransformation.None else PasswordVisualTransformation()
+            visualTransformation = if (visibility) VisualTransformation.None else PasswordVisualTransformation()
 
 
         )

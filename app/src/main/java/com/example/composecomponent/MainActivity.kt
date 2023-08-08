@@ -1,6 +1,7 @@
 package com.example.composecomponent
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.animateFloatAsState
@@ -48,7 +49,10 @@ class MainActivity : ComponentActivity() {
                     ) {
                       //  GoogleButton(onClicked = {})
                        // CoilImageLoaderNew()
-                        TextFieldCard()
+                       // TextFieldCard()
+                        GradientButton {
+                            Log.d("", "")
+                        }
                     }
 
                 }
