@@ -46,7 +46,8 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally
 
                     ) {
-                        GoogleButton(onClicked = {})
+                      //  GoogleButton(onClicked = {})
+                        CoilImageLoaderNew()
                     }
 
                 }
@@ -143,28 +144,28 @@ fun RowScope.CustomBuild(weight: Float, color: Color = MaterialTheme.colors.prim
 /**
  * Learn about Custom text using build annotation using with style paragraphStyle or SpanStyle
  */
-@Composable
-fun CustomTextView() {
-    Text(
-        buildAnnotatedString {
-            withStyle(style = ParagraphStyle(textAlign = TextAlign.Center)) {
-                withStyle(
-                    style = SpanStyle(
-                        color = Color.Blue,
-                        fontSize = MaterialTheme.typography.h5.fontSize
-                    )
-                ) {
-                    append("A")
-                }
-
-                append("B")
-                append("C")
-                append("D")
-            }
-        }, modifier = Modifier.width(200.dp)
-    )
-
-}
+//@Composable
+//fun CustomTextView() {
+//    Text(
+//        buildAnnotatedString {
+//            withStyle(style = ParagraphStyle(textAlign = TextAlign.Center)) {
+//                withStyle(
+//                    style = SpanStyle(
+//                        color = Color.Blue,
+//                        fontSize = MaterialTheme.typography.h5.fontSize
+//                    )
+//                ) {
+//                    append("A")
+//                }
+//
+//                append("B")
+//                append("C")
+//                append("D")
+//            }
+//        }, modifier = Modifier.width(200.dp)
+//    )
+//
+//}
 
 /**
  * Learn about Custom text using build annotation using with style paragraphStyle or SpanStyle
