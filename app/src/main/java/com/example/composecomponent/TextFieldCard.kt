@@ -40,7 +40,7 @@ fun TextFieldCard() {
 
     ) {
         var text by remember {
-            mutableStateOf("Type here")
+            mutableStateOf("")
         }
         var password by rememberSaveable {
             mutableStateOf("")
@@ -81,11 +81,21 @@ fun TextFieldCard() {
 
         )
 
-        TextField(value = text, onValueChange = { newText ->
-            text = newText
+        val max = 5
+
+        TextField(value = text, placeholder = {
+            Text(text = "type here")
+        }, onValueChange = { newText ->
+            if(newText.length < max)  text = newText
+
         }, label = { Text("Title") },
             leadingIcon = {
-                IconButton(onClick = { Log.d("Something Sub", "for here") }) {
+                IconButton(onClick = {
+                    Log.d(
+                        "Somet" +
+                                "hing Sub", "for here"
+                    )
+                }) {
                     Icon(imageVector = Icons.Filled.Email, contentDescription = "Email Box")
 
                 }

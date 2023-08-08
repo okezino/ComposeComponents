@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                       //  GoogleButton(onClicked = {})
                        // CoilImageLoaderNew()
-                       // TextFieldCard()
+                        TextFieldCard()
 //                        GradientButton {
 //                            Log.d("", "")
 //                        }
@@ -74,30 +74,30 @@ class MainActivity : ComponentActivity() {
 //
 //                        }
 
-                        LazyColumn(
-                            contentPadding = PaddingValues(all = 12.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
-                        ){
-                            section.forEach{ sec ->
-                                stickyHeader {
-                                    Text(
-                                        modifier = Modifier.fillMaxWidth()
-                                            .background(Color.White)
-                                            .padding(12.dp),
-                                        text = "Section $sec")
-
-                                }
-
-                                items(10){ value->
-                                    Text(
-                                        modifier = Modifier.fillMaxWidth()
-                                            .padding(12.dp),
-                                        text = "item  $value from section $sec")
-                                }
-                            }
-
-
-                        }
+//                        LazyColumn(
+//                            contentPadding = PaddingValues(all = 12.dp),
+//                            verticalArrangement = Arrangement.spacedBy(12.dp)
+//                        ){
+//                            section.forEach{ sec ->
+//                                stickyHeader {
+//                                    Text(
+//                                        modifier = Modifier.fillMaxWidth()
+//                                            .background(Color.White)
+//                                            .padding(12.dp),
+//                                        text = "Section $sec")
+//
+//                                }
+//
+//                                items(10){ value->
+//                                    Text(
+//                                        modifier = Modifier.fillMaxWidth()
+//                                            .padding(12.dp),
+//                                        text = "item  $value from section $sec")
+//                                }
+//                            }
+//
+//
+//                        }
                     }
 
                 }
