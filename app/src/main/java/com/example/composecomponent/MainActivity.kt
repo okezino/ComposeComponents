@@ -41,9 +41,12 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(color = Color.LightGray)
+                            .background(color = Color.LightGray),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+
                     ) {
-                        TextFieldCard()
+                        GoogleButton(onClicked = {})
                     }
 
                 }
