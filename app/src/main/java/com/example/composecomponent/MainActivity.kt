@@ -5,8 +5,12 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
@@ -27,13 +31,18 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composecomponent.data.domain.PersonRepository
 import com.example.composecomponent.ui.theme.ComposeComponentTheme
 import com.example.composecomponent.ui.theme.Typography
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            var section = listOf<String>("John","Peter", "Mark")
+
             ComposeComponentTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -43,15 +52,51 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .background(color = Color.LightGray),
-                        verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
 
                     ) {
                       //  GoogleButton(onClicked = {})
                        // CoilImageLoaderNew()
                        // TextFieldCard()
-                        GradientButton {
-                            Log.d("", "")
+//                        GradientButton {
+//                            Log.d("", "")
+//                        }
+//                        LazyColumn(
+//                            contentPadding = PaddingValues(all = 12.dp),
+//                            verticalArrangement = Arrangement.spacedBy(12.dp)
+//                        ){
+//                            itemsIndexed(items = PersonRepository.getPersons(),
+//                            key = {index , person ->
+//                                person.id
+//                            }){ index, person ->
+//                                PersonItemView(person = person)
+//                            }
+//
+//                        }
+
+                        LazyColumn(
+                            contentPadding = PaddingValues(all = 12.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ){
+                            section.forEach{ sec ->
+                                stickyHeader {
+                                    Text(
+                                        modifier = Modifier.fillMaxWidth()
+                                            .background(Color.White)
+                                            .padding(12.dp),
+                                        text = "Section $sec")
+
+                                }
+
+                                items(10){ value->
+                                    Text(
+                                        modifier = Modifier.fillMaxWidth()
+                                            .padding(12.dp),
+                                        text = "item  $value from section $sec")
+                                }
+                            }
+
+
                         }
                     }
 
