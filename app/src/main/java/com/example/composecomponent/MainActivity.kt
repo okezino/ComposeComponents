@@ -31,11 +31,16 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.composecomponent.data.domain.PersonRepository
+import com.example.composecomponent.data.model.Screen
 import com.example.composecomponent.ui.theme.ComposeComponentTheme
 import com.example.composecomponent.ui.theme.Typography
+import com.example.composecomponent.view.SetUpNavGraph
 
 class MainActivity : ComponentActivity() {
+    lateinit var navController : NavHostController
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,62 +50,66 @@ class MainActivity : ComponentActivity() {
 
             ComposeComponentTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    color = MaterialTheme.colors.background
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.LightGray),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                navController = rememberNavController()
+                SetUpNavGraph(navController = navController)
 
-                    ) {
-                      //  GoogleButton(onClicked = {})
-                       // CoilImageLoaderNew()
-                        TextFieldCard()
-//                        GradientButton {
-//                            Log.d("", "")
-//                        }
-//                        LazyColumn(
-//                            contentPadding = PaddingValues(all = 12.dp),
-//                            verticalArrangement = Arrangement.spacedBy(12.dp)
-//                        ){
-//                            itemsIndexed(items = PersonRepository.getPersons(),
-//                            key = {index , person ->
-//                                person.id
-//                            }){ index, person ->
-//                                PersonItemView(person = person)
-//                            }
-//
-//                        }
 
-//                        LazyColumn(
-//                            contentPadding = PaddingValues(all = 12.dp),
-//                            verticalArrangement = Arrangement.spacedBy(12.dp)
-//                        ){
-//                            section.forEach{ sec ->
-//                                stickyHeader {
-//                                    Text(
-//                                        modifier = Modifier.fillMaxWidth()
-//                                            .background(Color.White)
-//                                            .padding(12.dp),
-//                                        text = "Section $sec")
+//                Surface(
+//                    color = MaterialTheme.colors.background
+//                ) {
+//                    Column(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            .background(color = Color.LightGray),
+//                        horizontalAlignment = Alignment.CenterHorizontally
 //
-//                                }
+//                    ) {
+//                      //  GoogleButton(onClicked = {})
+//                       // CoilImageLoaderNew()
+//                        TextFieldCard()
+////                        GradientButton {
+////                            Log.d("", "")
+////                        }
+////                        LazyColumn(
+////                            contentPadding = PaddingValues(all = 12.dp),
+////                            verticalArrangement = Arrangement.spacedBy(12.dp)
+////                        ){
+////                            itemsIndexed(items = PersonRepository.getPersons(),
+////                            key = {index , person ->
+////                                person.id
+////                            }){ index, person ->
+////                                PersonItemView(person = person)
+////                            }
+////
+////                        }
 //
-//                                items(10){ value->
-//                                    Text(
-//                                        modifier = Modifier.fillMaxWidth()
-//                                            .padding(12.dp),
-//                                        text = "item  $value from section $sec")
-//                                }
-//                            }
+////                        LazyColumn(
+////                            contentPadding = PaddingValues(all = 12.dp),
+////                            verticalArrangement = Arrangement.spacedBy(12.dp)
+////                        ){
+////                            section.forEach{ sec ->
+////                                stickyHeader {
+////                                    Text(
+////                                        modifier = Modifier.fillMaxWidth()
+////                                            .background(Color.White)
+////                                            .padding(12.dp),
+////                                        text = "Section $sec")
+////
+////                                }
+////
+////                                items(10){ value->
+////                                    Text(
+////                                        modifier = Modifier.fillMaxWidth()
+////                                            .padding(12.dp),
+////                                        text = "item  $value from section $sec")
+////                                }
+////                            }
+////
+////
+////                        }
+//                    }
 //
-//
-//                        }
-                    }
-
-                }
+//                }
             }
         }
     }
