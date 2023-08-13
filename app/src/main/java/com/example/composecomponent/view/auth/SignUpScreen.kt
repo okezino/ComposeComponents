@@ -1,4 +1,4 @@
-package com.example.composecomponent.view
+package com.example.composecomponent.view.auth
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,8 +15,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.composecomponent.data.model.Screen
 
+
 @Composable
-fun HomeScreen(navController: NavController) {
+fun SignUpScreen(navController: NavController) {
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -27,36 +28,15 @@ fun HomeScreen(navController: NavController) {
 
             Text(
                 modifier = Modifier.clickable {
-                    navController.navigate(route = Screen.Profile.passNameAndId(3, "sandra"))
+                    navController.popBackStack()
                 },
-                text = "Home",
+                text = "Sign Up",
                 color = MaterialTheme.colors.primary,
                 fontSize = MaterialTheme.typography.h2.fontSize,
                 fontWeight = FontWeight.Bold
             )
 
-            Text(
-                modifier = Modifier.clickable {
-                    navController.navigate(route = Screen.Detail.passNameAndId(6, "okezino"))
-                },
-                text = "Detail",
-                color = MaterialTheme.colors.primary,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                fontWeight = FontWeight.Bold
-            )
-
-            Text(
-                modifier = Modifier.clickable {
-                    navController.navigate(route = "auth")
-                },
-                text = "Auth feature",
-                color = MaterialTheme.colors.primary,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                fontWeight = FontWeight.Bold
-            )
-
         }
-
 
     }
 
@@ -64,6 +44,6 @@ fun HomeScreen(navController: NavController) {
 
 @Composable
 @Preview(showBackground = true)
-fun HomeScreenPreview() {
-    HomeScreen(navController = rememberNavController())
+fun SignUpScreenPreview() {
+    SignUpScreen(navController = rememberNavController())
 }
