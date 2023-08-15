@@ -17,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.composecomponent.data.model.Screen
 
 @Composable
-fun DashBoardScreen(navController: NavController) {
+fun DashBoardScreen() {
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -25,10 +25,7 @@ fun DashBoardScreen(navController: NavController) {
         contentAlignment = Alignment.Center
     ) {
 
-        Text(
-            modifier = Modifier.clickable {
-                navController.navigate(route = Screen.Home.route)
-            }, text = "DashBoardScreen",
+        Text(text = "DashBoardScreen",
             fontSize = MaterialTheme.typography.h4.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -41,5 +38,5 @@ fun DashBoardScreen(navController: NavController) {
 @Composable
 @Preview(showBackground = true)
 fun DashBoardScreenPreview() {
-    DashBoardScreen(navController = rememberNavController())
+    DashBoardScreen()
 }

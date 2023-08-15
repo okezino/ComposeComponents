@@ -17,18 +17,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.composecomponent.data.model.Screen
 
 @Composable
-fun TransactionScreen(navController: NavController) {
+fun TransactionScreen() {
 
     Box(
         modifier = Modifier.fillMaxSize()
-            .background(Color.Cyan),
+            .background(Color.LightGray),
         contentAlignment = Alignment.Center
     ) {
 
-        Text(
-            modifier = Modifier.clickable {
-                navController.navigate(route = Screen.Home.route)
-            }, text = "TransactionScreen",
+        Text( text = "TransactionScreen",
             fontSize = MaterialTheme.typography.h4.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -41,5 +38,5 @@ fun TransactionScreen(navController: NavController) {
 @Composable
 @Preview(showBackground = true)
 fun TransactionScreenPreview() {
-    TransactionScreen(navController = rememberNavController())
+    TransactionScreen()
 }

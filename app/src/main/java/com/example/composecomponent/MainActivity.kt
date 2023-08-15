@@ -28,6 +28,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.composecomponent.ui.theme.ComposeComponentTheme
 import com.example.composecomponent.ui.theme.Typography
+import com.example.composecomponent.view.bottomNav.MainScreen
 import com.example.composecomponent.view.nav_graph.SetUpNavGraph
 
 class MainActivity : ComponentActivity() {
@@ -41,8 +42,9 @@ class MainActivity : ComponentActivity() {
 
             ComposeComponentTheme {
                 // A surface container using the 'background' color from the theme
-                navController = rememberNavController()
-                SetUpNavGraph(navController = navController)
+//                navController = rememberNavController()
+//                SetUpNavGraph(navController = navController)
+               MainScreen()
 
 
 //                Surface(

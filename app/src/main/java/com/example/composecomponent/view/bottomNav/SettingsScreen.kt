@@ -17,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.composecomponent.data.model.Screen
 
 @Composable
-fun SettingsScreen(navController: NavController) {
+fun SettingsScreen() {
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -25,10 +25,7 @@ fun SettingsScreen(navController: NavController) {
         contentAlignment = Alignment.Center
     ) {
 
-        Text(
-            modifier = Modifier.clickable {
-                navController.navigate(route = Screen.Home.route)
-            }, text = "SettingsScreen",
+        Text(text = "SettingsScreen",
             fontSize = MaterialTheme.typography.h4.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -41,5 +38,5 @@ fun SettingsScreen(navController: NavController) {
 @Composable
 @Preview(showBackground = true)
 fun SettingsScreenPreview() {
-    SettingsScreen(navController = rememberNavController())
+    SettingsScreen()
 }
