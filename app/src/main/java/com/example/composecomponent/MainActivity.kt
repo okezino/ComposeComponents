@@ -1,6 +1,7 @@
 package com.example.composecomponent
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -39,12 +40,14 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             var section = listOf<String>("John","Peter", "Mark")
+            val key = BuildConfig.API_KEY
 
             ComposeComponentTheme {
                 // A surface container using the 'background' color from the theme
 //                navController = rememberNavController()
 //                SetUpNavGraph(navController = navController)
                MainScreen()
+                Log.d("Main Activity" , key)
 
 
 //                Surface(
